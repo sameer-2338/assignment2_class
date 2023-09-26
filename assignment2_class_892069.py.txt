@@ -1,0 +1,88 @@
+class Vehicle:
+    def __init__(self, name_of_vehicle, max_speed, average_speed):
+        self.name_of_vehicle = name_of_vehicle
+        self.max_speed = max_speed
+        self.average_speed = average_speed
+
+class Car(Vehicle):
+    def __init__(self, name_of_vehicle, max_speed, average_speed):
+        super().__init__(name_of_vehicle, max_speed, average_speed)
+
+    def seating_capacity(self, capacity):
+        return f"total {capacity} people can sit in {self.name_of_vehicle}"
+carName = input("enter car name ")
+seatingCapacity = input("enter seating capacity")
+carClass = Car(carName,43,12)
+print(carClass.seating_capacity(seatingCapacity))
+
+# what is multiple inheritance?
+# multiple inheritance means one child class can have multiple parent classes.
+
+class OperatingSystem:
+    def __init__(self, name):
+        self.name = name
+
+    def features(self):
+        pass
+
+class Brand:
+    def __init__(self, brand_name):
+        self.brand_name = brand_name
+
+    def logo(self):
+        pass
+
+class Phone(OperatingSystem, Brand):
+    def __init__(self, name, brand_name):
+        OperatingSystem.__init__(self, name)
+        Brand.__init__(self, brand_name)
+
+    def features(self):
+        return f"{self.name} runs on {self.brand_name} and supports various apps."
+
+    def logo(self):
+        return f"{self.brand_name}'s logo is displayed on {self.name}."
+
+
+# question 4
+
+class Person:
+   def __init__(self, name, age, gender):
+        self.name = name
+        self.__age = age
+        self.gender = gender
+
+    def say_hello(self):
+        print(f"Hello,  {self.name}.")
+
+    def is_adult(self):
+        return self.__age >= 18
+
+    def get_age(self):
+        return self.__age
+
+
+
+class Student(Person):
+    def __init__(self, name, age, gender, student_id, course):
+        super().__init__(name, age, gender)
+        self.student_id = student_id
+        self.course = course
+
+    def study(self):
+        print(f"{self.__name} is studying {self.course}.")
+
+class Teacher(Person):
+    def __init__(self, name, age, gender, teacher_id, subject):
+        super().__init__(name, age, gender)
+        self.teacher_id = teacher_id
+        self.subject = subject
+
+    def say_hello(self):
+        print(f"Hello, I'm {self.__name}, your {self.subject} teacher.")
+        
+        
+
+
+
+
